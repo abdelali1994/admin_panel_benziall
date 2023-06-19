@@ -21,7 +21,7 @@ class UserView extends StatelessWidget {
             itemBuilder: (context, index) {
               UserModel userModel = value.getUserList[index];
               return SingleUserCard(
-                userModel: userModel,
+                userModel: userModel,index: index,
                 
               );
             },

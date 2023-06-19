@@ -37,4 +37,11 @@ class AppProvider with ChangeNotifier {
     await getUserListFun();
     await getCategoriesListFun();
   }
+
+  void updateUserList(int index,UserModel userModel) async {
+    await FirebaseFirestoreHelper.instance.updateUser(userModel);
+    // int index = _userList.indexOf(userModel);
+    _userList[index] = userModel;
+    notifyListeners();
+  }
 }

@@ -34,10 +34,20 @@ class FirebaseFirestoreHelper {
 
   Future<String> deleteSingleUser(String id) async {
     try {
-     await _firebaseFirestore.collection("users").doc(id).delete();
+      await _firebaseFirestore.collection("users").doc(id).delete();
       return "Successesfully Deleted";
     } catch (e) {
       return e.toString();
+    }
+  }
+
+  Future<void> updateUser( UserModel userModel) async {
+    try {
+      await _firebaseFirestore
+          .collection("users")
+          .doc(userModel.id)
+          .update(userModel.toJson());
+    } catch (e) {
     }
   }
 }

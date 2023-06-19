@@ -22,6 +22,7 @@ ThemeData themeData = ThemeData(
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      minimumSize: const Size(double.infinity,48),
       backgroundColor: Colors.red,
       textStyle: const TextStyle(
         fontSize: 18.0,
