@@ -41,13 +41,30 @@ class FirebaseFirestoreHelper {
     }
   }
 
-  Future<void> updateUser( UserModel userModel) async {
+  Future<void> updateUser(UserModel userModel) async {
     try {
       await _firebaseFirestore
           .collection("users")
           .doc(userModel.id)
           .update(userModel.toJson());
+    } catch (e) {}
+  }
+
+  Future<String> deleteSingleCategory(String id) async {
+    try {
+      await _firebaseFirestore.collection("categories").doc(id).delete();
+      return "Successesfully Deleted";
     } catch (e) {
+      return e.toString();
     }
+  }
+
+  Future<void> updateSingleCategory(CategoryModel categoryModel) async {
+    try {
+      await _firebaseFirestore
+          .collection("categories")
+          .doc(categoryModel.id)
+          .update(categoryModel.toJson());
+    } catch (e) {}
   }
 }

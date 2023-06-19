@@ -19,7 +19,7 @@ class AppProvider with ChangeNotifier {
   }
 
   Future<void> deleteUserFromFirebase(UserModel userModel) async {
-    notifyListeners();
+    // notifyListeners();
     String value =
         await FirebaseFirestoreHelper.instance.deleteSingleUser(userModel.id);
     if (value == "Successesfully Deleted") {
@@ -42,6 +42,27 @@ class AppProvider with ChangeNotifier {
     await FirebaseFirestoreHelper.instance.updateUser(userModel);
     // int index = _userList.indexOf(userModel);
     _userList[index] = userModel;
+    notifyListeners();
+  }
+
+
+  ///////////////////////Categories////////////
+    Future<void> deleteCategoryFromFirebase(CategoryModel categoryModel) async {
+ 
+    String value =
+        await FirebaseFirestoreHelper.instance.deleteSingleCategory(categoryModel.id);
+    if (value == "Successesfully Deleted") {
+      _categoriesList.remove(categoryModel);
+      showMessage("Successesfully Deleted");
+    }
+
+    notifyListeners();
+  }
+
+   void updateCategoryList(int index,CategoryModel categoryModel) async {
+    await FirebaseFirestoreHelper.instance.updateSingleCategory(categoryModel);
+    // int index = _userList.indexOf(userModel);
+    _categoriesList[index] = categoryModel;
     notifyListeners();
   }
 }

@@ -1,5 +1,6 @@
 import 'package:admin_panel_benziall/constants/routes.dart';
 import 'package:admin_panel_benziall/provider/app_provider.dart';
+import 'package:admin_panel_benziall/screens/categories_view/categories_view.dart';
 import 'package:admin_panel_benziall/screens/home_page/widgets/single_dash_item.dart';
 import 'package:admin_panel_benziall/screens/user_view/user_view.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       body: isLoading
-          ?  Center(
+          ? Center(
               child: CircularProgressIndicator(),
             )
           : Padding(
@@ -79,7 +80,10 @@ class _HomepageState extends State<Homepage> {
                               title: appProvider.getUserList.length.toString(),
                               subtitle: "Users"),
                           SingleDashItem(
-                              onPressed: () {},
+                              onPressed: () {
+                                Routes.instance.push(
+                                    widget: const CategoriesView(), context: context);
+                              },
                               title: appProvider.getCategoriesList.length
                                   .toString(),
                               subtitle: "Categories"),

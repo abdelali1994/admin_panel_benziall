@@ -14,7 +14,6 @@ class CategoryModel {
 
   String image;
   String name;
-
   String id;
 
   factory CategoryModel.fromJson(Map<String, dynamic> json) => CategoryModel(
@@ -28,4 +27,14 @@ class CategoryModel {
         "image": image,
         "name": name,
       };
+
+  CategoryModel copyWith({
+    String? name,
+    String? image,
+  }) =>
+      CategoryModel(
+        id: id,
+        name: name ?? this.name,
+        image: image ?? this.image,
+      );
 }

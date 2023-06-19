@@ -102,7 +102,7 @@ class _SingleUserCardState extends State<SingleUserCard> {
             GestureDetector(
               onTap: () async {
                 Routes.instance.push(
-                    widget: EditProfile(index:widget.index,userModel: widget.userModel),
+                    widget: EditUser(index:widget.index,userModel: widget.userModel),
                     context: context);
                 // setState(() {
                 //   isLoading = true;

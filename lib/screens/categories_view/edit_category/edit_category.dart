@@ -3,6 +3,7 @@
 import 'dart:io';
 import 'package:admin_panel_benziall/constants/constants.dart';
 import 'package:admin_panel_benziall/helpers/firebase_storage_helper/firebase_storage_helper.dart';
+import 'package:admin_panel_benziall/models/category_model/category_model.dart';
 import 'package:admin_panel_benziall/models/user_model/user_model.dart';
 import 'package:admin_panel_benziall/provider/app_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,16 +11,16 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
 
-class EditUser extends StatefulWidget {
-  final UserModel userModel;
+class EditCategory extends StatefulWidget {
+  final CategoryModel categoryModel;
   final int index;
-  const EditUser({super.key, required this.userModel, required this.index});
+  const EditCategory({super.key, required this.categoryModel, required this.index});
 
   @override
-  State<EditUser> createState() => _EditUserState();
+  State<EditCategory> createState() => _EditCategoryState();
 }
 
-class _EditUserState extends State<EditUser> {
+class _EditCategoryState extends State<EditCategory> {
   TextEditingController name = TextEditingController();
 
   File? image;
@@ -43,7 +44,7 @@ class _EditUserState extends State<EditUser> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: const Text(
-          "User Edit",
+          "Category Edit",
           style: TextStyle(
             color: Colors.black,
           ),
@@ -78,7 +79,7 @@ class _EditUserState extends State<EditUser> {
           TextFormField(
             controller: name,
             decoration: InputDecoration(
-              hintText: widget.userModel.name,
+              hintText: widget.categoryModel.name,
             ),
           ),
           const SizedBox(
@@ -91,20 +92,19 @@ class _EditUserState extends State<EditUser> {
                 Navigator.of(context).pop();
               } else if (image != null) {
                 String imageUrl = await FirebaseStorageHelper.instance
-                    .uploadUserImage(widget.userModel.id, image!);
-                UserModel userModel = widget.userModel.copyWith(
+                    .uploadUserImage(widget.categoryModel.id, image!);
+                CategoryModel categoryModel = widget.categoryModel.copyWith(
                   image: imageUrl,
                   name: name.text.isEmpty ? null : name.text,
                 );
-                appProvider.updateUserList(widget.index, userModel);
+                appProvider.updateCategoryList(widget.index, categoryModel);
                 showMessage("Successesfully Updated");
                 Navigator.of(context).pop();
               } else {
-                UserModel userModel = widget.userModel.copyWith(
-                  image: image,
+                CategoryModel categoryModel = widget.categoryModel.copyWith(
                   name: name.text.isEmpty ? null : name.text,
                 );
-                appProvider.updateUserList(widget.index, userModel);
+                appProvider.updateCategoryList(widget.index, categoryModel);
                 showMessage("Successesfully Updated");
               Navigator.of(context).pop();
               }
