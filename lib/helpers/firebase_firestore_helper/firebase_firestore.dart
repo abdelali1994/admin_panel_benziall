@@ -1,10 +1,14 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'dart:io';
+
 import 'package:admin_panel_benziall/constants/constants.dart';
+import 'package:admin_panel_benziall/helpers/firebase_storage_helper/firebase_storage_helper.dart';
 import 'package:admin_panel_benziall/models/category_model/category_model.dart';
 import 'package:admin_panel_benziall/models/user_model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 // import 'package:firebase_admin/firebase_admin.dart';
 
 class FirebaseFirestoreHelper {
@@ -66,5 +70,17 @@ class FirebaseFirestoreHelper {
           .doc(categoryModel.id)
           .update(categoryModel.toJson());
     } catch (e) {}
+  }
+
+  Future<CategoryModel> addSingleCategory(File image, String name) async {
+    CollectionReference reference = _firebaseFirestore.collection("categories");
+    String imageUrl = await FirebaseStorageHelper.instance
+        .uploadUserImage(reference.id, image);
+    CategoryModel addCategory =
+        CategoryModel(id: reference.id, image: imageUrl, name: name);
+    await reference.add(
+      addCategory.toJson(),
+    );
+    return addCategory;
   }
 }

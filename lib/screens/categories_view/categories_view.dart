@@ -1,6 +1,8 @@
+import 'package:admin_panel_benziall/constants/routes.dart';
 import 'package:admin_panel_benziall/models/category_model/category_model.dart';
 import 'package:admin_panel_benziall/models/user_model/user_model.dart';
 import 'package:admin_panel_benziall/provider/app_provider.dart';
+import 'package:admin_panel_benziall/screens/categories_view/add_category/add_category.dart';
 import 'package:admin_panel_benziall/screens/categories_view/widgets/single_category_item.dart';
 import 'package:admin_panel_benziall/screens/user_view/widgets/single_user_card.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +17,17 @@ class CategoriesView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Categories View"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Routes.instance.push(
+                widget: const AddCategory(),
+                context: context,
+              );
+            },
+            icon: const Icon(Icons.add_circle),
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(

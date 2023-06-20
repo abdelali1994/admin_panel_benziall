@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
 }
 
 
+///////////////// ListView///////////////////////////
 // import 'package:flutter/material.dart';
 
 // class Product {
@@ -153,4 +154,123 @@ class MyApp extends StatelessWidget {
 //   runApp(MaterialApp(
 //     home: ProductListView(),
 //   ));
+// }
+
+
+///////////////////location/////////////
+// import 'package:flutter/material.dart';
+// import 'package:geolocator/geolocator.dart';
+// import 'package:permission_handler/permission_handler.dart';
+
+// void main() {
+//    runApp(const MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Location Demo',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: MyHomePage(),
+//     );
+//   }
+// }
+
+// class MyHomePage extends StatefulWidget {
+//   @override
+//   _MyHomePageState createState() => _MyHomePageState();
+// }
+
+// class _MyHomePageState extends State<MyHomePage> {
+//   String latitude = '';
+//   String longitude = '';
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Location Demo'),
+//       ),
+//       body: Center(
+//         child: Column(
+//           mainAxisAlignment: MainAxisAlignment.center,
+//           children: <Widget>[
+//             Text('Latitude: $latitude'),
+//             Text('Longitude: $longitude'),
+//             ElevatedButton(
+//               child:const  Text('Get Location'),
+//               onPressed: () {
+//                 getLocation();
+//               },
+//             ),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+
+//   void getLocation() async {
+//     // Request permission to access the location
+//     PermissionStatus permission = await Permission.location.request();
+
+//     if (permission.isDenied) {
+//       // Handle permission denied
+//       showDialog(
+//         context: context,
+//         builder: (BuildContext context) {
+//           return AlertDialog(
+//             title: Text('Location Access'),
+//             content: Text('Please enable location access from settings.'),
+//             actions: <Widget>[
+//               TextButton(
+//                 child: Text('OK'),
+//                 onPressed: () {
+//                   Navigator.of(context).pop();
+//                   openAppSettings();
+//                 },
+//               ),
+//             ],
+//           );
+//         },
+//       );
+//       return;
+//     }
+
+//     if (permission.isPermanentlyDenied) {
+//       // Handle permission permanently denied
+//       showDialog(
+//         context: context,
+//         builder: (BuildContext context) {
+//           return  AlertDialog(
+//             title: Text('Location Access'),
+//             content: Text('Location access is permanently denied.'),
+//             actions: <Widget>[
+//               TextButton(
+//                 child: Text('OK'),
+//                 onPressed: () {
+//                   Navigator.of(context).pop();
+//                   openAppSettings();
+//                 },
+//               ),
+//             ],
+//           );
+//         },
+//       );
+//       return;
+//     }
+
+//     // Get the current position
+//     Position position = await Geolocator.getCurrentPosition(
+//       desiredAccuracy: LocationAccuracy.high,
+//     );
+
+//     setState(() {
+//       latitude = '${position.latitude}';
+//       longitude = '${position.longitude}';
+//     });
+//   }
 // }

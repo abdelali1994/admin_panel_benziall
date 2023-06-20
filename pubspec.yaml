@@ -44,6 +44,8 @@ dependencies:
   http: ^0.13.5
   firebase_admin: ^0.2.0
   image_picker: ^0.8.8
+  geolocator: ^9.0.2
+  permission_handler: ^10.3.0
 
 
 
