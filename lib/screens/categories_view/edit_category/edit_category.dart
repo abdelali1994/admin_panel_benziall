@@ -14,7 +14,8 @@ import 'package:provider/provider.dart';
 class EditCategory extends StatefulWidget {
   final CategoryModel categoryModel;
   final int index;
-  const EditCategory({super.key, required this.categoryModel, required this.index});
+  const EditCategory(
+      {super.key, required this.categoryModel, required this.index});
 
   @override
   State<EditCategory> createState() => _EditCategoryState();
@@ -58,11 +59,13 @@ class _EditCategoryState extends State<EditCategory> {
                   onPressed: () {
                     takePicture();
                   },
-                  child: CircleAvatar(
-                      radius: 50,
-                      child: image == null
-                          ? const Icon(Icons.camera_alt)
-                          : Image.file(image!)),
+                  child: const CircleAvatar(
+                      radius: 50, child:  Icon(Icons.camera_alt)),
+                  // child: CircleAvatar(
+                  //     radius: 50,
+                  //     child: image == null
+                  //         ? const Icon(Icons.camera_alt)
+                  //         : Image.file(image!)),
                 )
               : CupertinoButton(
                   onPressed: () {
@@ -106,7 +109,7 @@ class _EditCategoryState extends State<EditCategory> {
                 );
                 appProvider.updateCategoryList(widget.index, categoryModel);
                 showMessage("Successesfully Updated");
-              Navigator.of(context).pop();
+                Navigator.of(context).pop();
               }
             },
           ),

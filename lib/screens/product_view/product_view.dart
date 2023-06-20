@@ -1,6 +1,7 @@
 import 'package:admin_panel_benziall/constants/routes.dart';
 import 'package:admin_panel_benziall/models/product_model/product_model.dart';
 import 'package:admin_panel_benziall/provider/app_provider.dart';
+import 'package:admin_panel_benziall/screens/product_view/add_product/add_product.dart';
 import 'package:admin_panel_benziall/screens/product_view/widgets/single_product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,10 +25,10 @@ class _ProductViewState extends State<ProductView> {
         actions: [
           IconButton(
             onPressed: () {
-              // Routes.instance.push(
-              //   widget: const AddCategory(),
-              //   context: context,
-              // );
+              Routes.instance.push(
+                widget: const AddProduct(),
+                context: context,
+              );
             },
             icon: const Icon(Icons.add_circle),
           )
@@ -61,7 +62,10 @@ class _ProductViewState extends State<ProductView> {
                   itemBuilder: (ctx, index) {
                     ProductModel singleProduct =
                         appProvider.getProductList[index];
-                    return SingleProductView(singleProduct: singleProduct);
+                    return SingleProductView(
+                      singleProduct: singleProduct,
+                      index: index,
+                    );
                   }),
             ],
           ),
@@ -70,4 +74,3 @@ class _ProductViewState extends State<ProductView> {
     );
   }
 }
-

@@ -1,15 +1,20 @@
+import 'package:admin_panel_benziall/constants/routes.dart';
 import 'package:admin_panel_benziall/models/product_model/product_model.dart';
 import 'package:admin_panel_benziall/provider/app_provider.dart';
+import 'package:admin_panel_benziall/screens/product_view/edit_product/edit_product.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SingleProductView extends StatefulWidget {
+
+  final ProductModel singleProduct;
+  final int index;
+  
   const SingleProductView({
     super.key,
     required this.singleProduct,
+    required this.index,
   });
-
-  final ProductModel singleProduct;
 
   @override
   State<SingleProductView> createState() => _SingleProductViewState();
@@ -126,11 +131,11 @@ class _SingleProductViewState extends State<SingleProductView> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // Routes.instance.push(
-                      //     widget: EditCategory(
-                      //         categoryModel: widget.singleCategory,
-                      //         index: widget.index),
-                      //     context: context);
+                      Routes.instance.push(
+                          widget: EditProdut(
+                              productModel: widget.singleProduct,
+                              index: widget.index),
+                          context: context);
                     },
                     child: const Icon(
                       Icons.edit,

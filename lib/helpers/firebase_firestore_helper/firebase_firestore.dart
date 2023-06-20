@@ -74,12 +74,13 @@ class FirebaseFirestoreHelper {
   }
 
   Future<CategoryModel> addSingleCategory(File image, String name) async {
-    CollectionReference reference = _firebaseFirestore.collection("categories");
+    DocumentReference reference =
+        _firebaseFirestore.collection("categories").doc();
     String imageUrl = await FirebaseStorageHelper.instance
         .uploadUserImage(reference.id, image);
     CategoryModel addCategory =
         CategoryModel(id: reference.id, image: imageUrl, name: name);
-    await reference.add(
+    await reference.set(
       addCategory.toJson(),
     );
     return addCategory;
@@ -106,5 +107,48 @@ class FirebaseFirestoreHelper {
     } catch (e) {
       return e.toString();
     }
+  }
+
+  Future<void> updateSingleProduct(ProductModel productModel) async {
+    try {
+      await _firebaseFirestore
+          .collection("categories")
+          .doc(productModel.categoryId)
+          .collection("products")
+          .doc(productModel.id)
+          .update(productModel.toJson());
+    } catch (e) {}
+  }
+
+  Future<ProductModel> addSingleProduct(
+    File image,
+    String name,
+    String categoryId,
+    String price,
+    String description,
+    // String id,
+  ) async {
+    DocumentReference reference = _firebaseFirestore
+        .collection("categories")
+        .doc(categoryId)
+        .collection("products")
+        .doc();
+
+    String imageUrl = await FirebaseStorageHelper.instance
+        .uploadUserImage(reference.id, image);
+    ProductModel addProduct = ProductModel(
+      id: reference.id,
+      image: imageUrl,
+      name: name,
+      categoryId: categoryId,
+      description: description,
+      isFavourite: false,
+      price: double.parse(price),
+      qty: 1,
+    );
+    await reference.set(
+      addProduct.toJson(),
+    );
+    return addProduct;
   }
 }

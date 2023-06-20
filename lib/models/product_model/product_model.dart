@@ -18,7 +18,7 @@ class ProductModel {
     this.qty,
   });
   String image;
-  String id,categoryId;
+  String id, categoryId;
   bool isFavourite;
   String name;
   double price;
@@ -50,16 +50,21 @@ class ProductModel {
       };
 
   ProductModel copyWith({
-    int? qty,
+    String? name,
+    String? image,
+    String? id,
+    String? categoryId,
+    String? price,
+    String? description,
   }) =>
       ProductModel(
-        id: id,
-        name: name,
-        description: description,
-        categoryId: categoryId,
-        image: image,
-        isFavourite: isFavourite,
-        qty: qty ?? this.qty,
-        price: price,
+        id: id ?? this.id,
+        name: name ?? this.name,
+        categoryId: categoryId ?? this.categoryId,
+        description: description ?? this.description,
+        isFavourite: false,
+        price: price != null ? double.parse(price) : this.price,
+        image: image ?? this.image,
+        qty: 1,
       );
 }
