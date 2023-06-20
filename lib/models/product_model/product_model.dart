@@ -12,12 +12,13 @@ class ProductModel {
     required this.name,
     required this.price,
     required this.description,
+    required this.categoryId,
     // required this.status,
     required this.isFavourite,
     this.qty,
   });
   String image;
-  String id;
+  String id,categoryId;
   bool isFavourite;
   String name;
   double price;
@@ -29,6 +30,7 @@ class ProductModel {
         id: json["id"],
         name: json["name"],
         description: json["description"],
+        categoryId: json["categoryId"],
         image: json["image"],
         qty: json["qty"],
         // status: json["status"],
@@ -40,6 +42,7 @@ class ProductModel {
         "name": name,
         "image": image,
         "description": description,
+        "categoryId": categoryId,
         // "status": status,
         "isFavourite": isFavourite,
         "price": price,
@@ -53,6 +56,7 @@ class ProductModel {
         id: id,
         name: name,
         description: description,
+        categoryId: categoryId,
         image: image,
         isFavourite: isFavourite,
         qty: qty ?? this.qty,

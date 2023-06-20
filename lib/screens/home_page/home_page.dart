@@ -2,6 +2,7 @@ import 'package:admin_panel_benziall/constants/routes.dart';
 import 'package:admin_panel_benziall/provider/app_provider.dart';
 import 'package:admin_panel_benziall/screens/categories_view/categories_view.dart';
 import 'package:admin_panel_benziall/screens/home_page/widgets/single_dash_item.dart';
+import 'package:admin_panel_benziall/screens/product_view/product_view.dart';
 import 'package:admin_panel_benziall/screens/user_view/user_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -82,14 +83,21 @@ class _HomepageState extends State<Homepage> {
                           SingleDashItem(
                               onPressed: () {
                                 Routes.instance.push(
-                                    widget: const CategoriesView(), context: context);
+                                    widget: const CategoriesView(),
+                                    context: context);
                               },
                               title: appProvider.getCategoriesList.length
                                   .toString(),
                               subtitle: "Categories"),
                           SingleDashItem(
-                              onPressed: () {},
-                              title: "400",
+                              onPressed: () {
+                                Routes.instance.push(
+                                  widget: const ProductView(),
+                                  context: context,
+                                );
+                              },
+                              title:
+                                  appProvider.getProductList.length.toString(),
                               subtitle: "Products"),
                           SingleDashItem(
                               onPressed: () {},

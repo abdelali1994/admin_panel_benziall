@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:admin_panel_benziall/constants/constants.dart';
 import 'package:admin_panel_benziall/helpers/firebase_storage_helper/firebase_storage_helper.dart';
 import 'package:admin_panel_benziall/models/category_model/category_model.dart';
+import 'package:admin_panel_benziall/models/product_model/product_model.dart';
 import 'package:admin_panel_benziall/models/user_model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -82,5 +83,28 @@ class FirebaseFirestoreHelper {
       addCategory.toJson(),
     );
     return addCategory;
+  }
+
+//////////products/////
+  Future<List<ProductModel>> getProducts() async {
+    QuerySnapshot<Map<String, dynamic>> querySnashot =
+        await _firebaseFirestore.collectionGroup("products").get();
+    List<ProductModel> productList =
+        querySnashot.docs.map((e) => ProductModel.fromJson(e.data())).toList();
+    return productList;
+  }
+
+  Future<String> deleteProduct(String categoryId, String productId) async {
+    try {
+      await _firebaseFirestore
+          .collection("categories")
+          .doc(categoryId)
+          .collection("products")
+          .doc(productId)
+          .delete();
+      return "Successesfully Deleted";
+    } catch (e) {
+      return e.toString();
+    }
   }
 }
