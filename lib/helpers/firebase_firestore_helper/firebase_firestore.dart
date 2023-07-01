@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:admin_panel_benziall/constants/constants.dart';
 import 'package:admin_panel_benziall/helpers/firebase_storage_helper/firebase_storage_helper.dart';
 import 'package:admin_panel_benziall/models/category_model/category_model.dart';
+import 'package:admin_panel_benziall/models/order_model/order_model.dart';
 import 'package:admin_panel_benziall/models/product_model/product_model.dart';
 import 'package:admin_panel_benziall/models/user_model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -150,5 +151,29 @@ class FirebaseFirestoreHelper {
       addProduct.toJson(),
     );
     return addProduct;
+  }
+
+  /////////Oreders//////
+  Future<List<OrderModel>> getCompletedOrder() async {
+    QuerySnapshot<Map<String, dynamic>> completedOrder =
+        await _firebaseFirestore
+            .collection("orders")
+            .where("status", isEqualTo: "Completed")
+            .get();
+    // await _firebaseFirestore.collection("orders").get();
+    List<OrderModel> completedOrderList =
+        completedOrder.docs.map((e) => OrderModel.fromJson(e.data())).toList();
+    return completedOrderList;
+  }
+  Future<List<OrderModel>> getCancelOrder() async {
+    QuerySnapshot<Map<String, dynamic>> cancelOrder =
+        await _firebaseFirestore
+            .collection("orders")
+            .where("status", isEqualTo: "Cancel")
+            .get();
+    // await _firebaseFirestore.collection("orders").get();
+    List<OrderModel> cancelOrderList =
+        cancelOrder.docs.map((e) => OrderModel.fromJson(e.data())).toList();
+    return cancelOrderList;
   }
 }

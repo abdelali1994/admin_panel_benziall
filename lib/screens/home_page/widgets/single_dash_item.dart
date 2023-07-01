@@ -24,7 +24,7 @@ class SingleDashItem extends StatelessWidget {
             children: [
               Text(
                 title,
-                style: const TextStyle(fontSize: 35.0),
+                style: TextStyle(fontSize: subtitle == "Earning" ? 20 : 35.0),
               ),
               Text(
                 subtitle,
@@ -35,6 +35,5 @@ class SingleDashItem extends StatelessWidget {
         ),
       ),
     );
-    
   }
 }

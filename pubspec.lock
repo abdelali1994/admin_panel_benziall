@@ -29,10 +29,10 @@ packages:
     dependency: transitive
     description:
       name: asn1lib
-      sha256: ab96a1cb3beeccf8145c52e449233fe68364c9641623acd3adad66f8184f1039
+      sha256: b74e3842a52c61f8819a1ec8444b4de5419b41a7465e69d4aa681445377398b0
       url: "https://pub.dev"
     source: hosted
-    version: "1.4.0"
+    version: "1.4.1"
   async:
     dependency: transitive
     description:
@@ -181,10 +181,10 @@ packages:
     dependency: transitive
     description:
       name: file_selector_platform_interface
-      sha256: "2a7f4bbf7bd2f022ecea85bfb1754e87f7dd403a9abc17a84a4fa2ddfe2abc0a"
+      sha256: "412705a646a0ae90f33f37acfae6a0f7cbc02222d6cd34e479421c3e74d3853c"
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.1"
+    version: "2.6.0"
   file_selector_windows:
     dependency: transitive
     description:
@@ -324,58 +324,10 @@ packages:
     dependency: transitive
     description:
       name: gcloud
-      sha256: d58dc34430387b1994f471ab531072e3cdf9694dcdf69e51dceafe5761546cb7
+      sha256: "64e1f3b8e94d3ad0477fd25daf17ed5fb8590f1cda293bfd2616243a8da3c22f"
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.8"
-  geolocator:
-    dependency: "direct main"
-    description:
-      name: geolocator
-      sha256: "5c23f3613f50586c0bbb2b8f970240ae66b3bd992088cf60dd5ee2e6f7dde3a8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.0.2"
-  geolocator_android:
-    dependency: transitive
-    description:
-      name: geolocator_android
-      sha256: "94c2cf51f4a8387335cc2d1a21cc50897bc93069e05fc09aee29bd353a14f6f5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.1.9"
-  geolocator_apple:
-    dependency: transitive
-    description:
-      name: geolocator_apple
-      sha256: "36527c555f4c425f7d8fa8c7c07d67b78e3ff7590d40448051959e1860c1cfb4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.2.7"
-  geolocator_platform_interface:
-    dependency: transitive
-    description:
-      name: geolocator_platform_interface
-      sha256: af4d69231452f9620718588f41acc4cb58312368716bfff2e92e770b46ce6386
-      url: "https://pub.dev"
-    source: hosted
-    version: "4.0.7"
-  geolocator_web:
-    dependency: transitive
-    description:
-      name: geolocator_web
-      sha256: f68a122da48fcfff68bbc9846bb0b74ef651afe84a1b1f6ec20939de4d6860e1
-      url: "https://pub.dev"
-    source: hosted
-    version: "2.1.6"
-  geolocator_windows:
-    dependency: transitive
-    description:
-      name: geolocator_windows
-      sha256: f5911c88e23f48b598dd506c7c19eff0e001645bdc03bb6fecb9f4549208354d
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.1"
+    version: "0.8.9"
   googleapis:
     dependency: transitive
     description:
@@ -428,10 +380,10 @@ packages:
     dependency: transitive
     description:
       name: image_picker_android
-      sha256: "216dbfb6609e46f78613b8913d046a162588ad4f34909ae7bf85e9f94ea6d922"
+      sha256: d2bab152deb2547ea6f53d82ebca9b7e77386bb706e5789e815d37e08ea475bb
       url: "https://pub.dev"
     source: hosted
-    version: "0.8.7"
+    version: "0.8.7+3"
   image_picker_for_web:
     dependency: transitive
     description:

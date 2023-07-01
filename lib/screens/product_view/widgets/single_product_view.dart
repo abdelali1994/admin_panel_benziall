@@ -93,6 +93,7 @@ class _SingleProductViewState extends State<SingleProductView> {
                   height: 12.0,
                 ),
                 Text(
+                  textAlign:TextAlign.center,
                   widget.singleProduct.name,
                   style: const TextStyle(
                     fontSize: 18.0,
